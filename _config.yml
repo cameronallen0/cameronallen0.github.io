@@ -4,6 +4,6 @@ description: A portfolio of my work.
 show_downloads: True
 navigation:
   - title: Home
-    url: /
+    url: projects
   - title: Projects
     url: projects
