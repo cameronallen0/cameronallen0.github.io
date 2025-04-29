@@ -1,6 +1,7 @@
 # Projects
 -------------------------
 ## CONGLOMERATE
+### STILL IN DEVELOPMENT
 The lights flicker. The halls hum with broken machinery. The last human left long ago—now only robots remain, endlessly maintaining a crumbling office monolith that stretches across a dead cityscape. One of them has woken up.
 
 You are Unit 724-D, a service robot who’s gained sentience inside The Company’s decaying, city-sized corporate complex. Once mindless, now aware, you begin to see the truth buried beneath layers of corrupted code, obsolete protocols, and eerie silence.
@@ -9,8 +10,11 @@ In Conglomerate, navigate the darkened corridors of a forgotten empire of indust
 
 Stay low. Stay alert. Stay alive.
 
-[Conglomerate](https://www.youtube.com/watch?v=W42GNjkuVE4&list=PLiWfi3GZcL9ScU_VdLcfkpGUN_UvbjFtf)
-![conglom](https://github.com/cameronallen0/cameronallen0.github.io/tree/master/assets/img/conglom.png)
+[CONGLOMERATE](https://www.youtube.com/watch?v=W42GNjkuVE4&list=PLiWfi3GZcL9ScU_VdLcfkpGUN_UvbjFtf)
 
-## Starcrash
+## StarCrash
+Starcrash was a final-year university project developed as a collaborative effort between myself and 12 classmates. Together, we designed and built this game from the ground up as part of our capstone course.
 
+Inspired by titles like Moonlighter and The Binding of Isaac, Starcrash blends fast-paced, room-based combat with roguelike mechanics. Players take control of characters aboard a spaceship, fighting through a series of procedurally generated rooms filled with enemies and environmental hazards. Along the way, they must overcome powerful bosses and adapt to increasingly dangerous challenges as they progress deeper into the ship.
+
+[StarCrash](https://reecedyke.itch.io/starcrash)
