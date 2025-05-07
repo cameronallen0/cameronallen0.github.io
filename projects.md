@@ -5,7 +5,7 @@
 
 A sentient machine awakens in a forgotten ringworld archive and must choose stealth or resistance to uncover the truth of humanity's disappearance.
 
-[WELLSYSTEM](cameronallen0.github.io/wellsystem.md)
+[WELLSYSTEM](wellsystem.md)
 
 ## StarCrash
 Starcrash was a final-year university project developed as a collaborative effort between myself and 12 classmates. Together, we designed and built this game from the ground up as one of our final projects.
