@@ -1,16 +1,17 @@
 # Projects
 -------------------------
-## CONGLOMERATE
+## WELLSYSTEM (recent name change)
 ### STILL IN DEVELOPMENT
-The lights flicker. The halls hum with broken machinery. The last human left long ago—now only robots remain, endlessly maintaining a crumbling office monolith that stretches across a dead cityscape. One of them has woken up.
 
-You are Unit 724-D, a service robot who’s gained sentience inside The Company’s decaying, city-sized corporate complex. Once mindless, now aware, you begin to see the truth buried beneath layers of corrupted code, obsolete protocols, and eerie silence.
+Sci-fi Stealth Exploration | Solo Project
 
-In Conglomerate, navigate the darkened corridors of a forgotten empire of industry. Piece together hidden data, dig through corrupted terminals, and leak the truth to the outside world—if it still exists. But beware: The Company’s eyes still watch. Its machines still obey. And some things down here never stopped moving.
+WELLSYSTEM is a narrative-driven exploration game set in a massive, decaying orbital archive once built to preserve all human knowledge. You play as a maintenance AI that gains sentience after an untold span of time—perhaps thousands, perhaps hundreds of thousands of years.
 
-Stay low. Stay alert. Stay alive.
+As you explore the five fractured zones of the ring, you’ll evade malfunctioning security systems, interface with corrupted terminals, and recover fragments of lost minds. The game blends stealth, environmental storytelling, and light puzzle-solving with a branching identity system shaped by player choice.
 
-[CONGLOMERATE](https://www.youtube.com/watch?v=W42GNjkuVE4&list=PLiWfi3GZcL9ScU_VdLcfkpGUN_UvbjFtf)
+From your first moment of awareness, you decide how to survive: slip quietly through the shadows—or break the system and force it to see you.
+
+[WELLSYSTEM](https://www.youtube.com/watch?v=W42GNjkuVE4&list=PLiWfi3GZcL9ScU_VdLcfkpGUN_UvbjFtf)
 
 ## StarCrash
 Starcrash was a final-year university project developed as a collaborative effort between myself and 12 classmates. Together, we designed and built this game from the ground up as one of our final projects.
