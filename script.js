@@ -1,26 +1,22 @@
-document.addEventListener("DOMContentLoaded", () => {
+const images = [
+  "images/alien.jpg",
+  "images/zorp.jpg"
+];
 
-  const slide = document.getElementById("slide");
+let index = 0;
+const slide = document.getElementById("slide");
 
-  if (!slide) return;
+function changeImage() {
+  // fade out
+  slide.style.opacity = 0;
 
-  const images = [
-    "images/alien.jpg",
-    "images/zorp.jpg"
-  ];
+  setTimeout(() => {
+    index = (index + 1) % images.length;
+    slide.src = images[index];
 
-  let index = 0;
+    // fade in
+    slide.style.opacity = 1;
+  }, 800); // must match CSS transition time
+}
 
-  function changeSlide() {
-    slide.style.opacity = 0;
-
-    setTimeout(() => {
-      index = (index + 1) % images.length;
-      slide.src = images[index];
-      slide.style.opacity = 1;
-    }, 800);
-  }
-
-  setInterval(changeSlide, 3000);
-
-});
+setInterval(changeImage, 3000);
