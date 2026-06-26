@@ -1,90 +1,91 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* =========================
-      BOOT + TYPING SYSTEM
-  ========================== */
-
   const container = document.querySelector(".typing-area");
-  const elements = container.querySelectorAll("h1, h2, p, a");
+  if (!container) return;
+
+  const elements = Array.from(container.querySelectorAll("h1, h2, p, a, .slideshow"));
 
   const typingSpeed = 15;
   const bootDelay = 1200;
 
   let index = 0;
 
-  // store original text + clear screen
-  elements.forEach(el => {
-    el.dataset.text = el.textContent;
-    el.textContent = "";
-  });
-
-  function typeElement(el, text, callback) {
+  function typeText(el, text, done) {
     let i = 0;
     el.textContent = "";
 
-    function typeChar() {
+    function step() {
       if (i < text.length) {
-        el.textContent += text[i];
-        i++;
-        setTimeout(typeChar, typingSpeed);
+        el.textContent += text[i++];
+        setTimeout(step, typingSpeed);
       } else {
-        callback?.();
+        done?.();
       }
     }
 
-    typeChar();
+    step();
   }
 
-  function nextTyping() {
+  function showSlideshow(el, done) {
+    // reveal slideshow BEFORE typing continues
+    el.classList.remove("hidden");
+
+    const img = el.querySelector("img");
+
+    const images = [
+      "images/alien.jpg",
+      "images/zorp.jpg"
+    ];
+
+    let i = 0;
+
+    function startSlideshow() {
+      setInterval(() => {
+        img.style.opacity = 0;
+
+        setTimeout(() => {
+          i = (i + 1) % images.length;
+          img.src = images[i];
+          img.style.opacity = 1;
+        }, 800);
+
+      }, 3000);
+    }
+
+    startSlideshow();
+    done?.();
+  }
+
+  function next() {
     if (index >= elements.length) return;
 
     const el = elements[index];
-    const text = el.dataset.text;
 
-    typeElement(el, text, () => {
+    // 🧠 SPECIAL CASE: slideshow block
+    if (el.classList.contains("slideshow")) {
+      showSlideshow(el, () => {
+        index++;
+        next();
+      });
+      return;
+    }
+
+    const text = el.dataset.text || el.textContent;
+
+    typeText(el, text, () => {
       index++;
-      nextTyping();
+      next();
     });
   }
 
-  setTimeout(() => {
-    nextTyping();
-  }, bootDelay);
-
-
-  /* =========================
-      SLIDESHOW SYSTEM
-  ========================== */
-
-  const images = [
-    "images/img1.jpg",
-    "images/img2.jpg",
-    "images/img3.jpg"
-  ];
-
-  const slide = document.getElementById("slide");
-
-  if (slide) {
-    let imgIndex = 0;
-
-    // ensure smooth fade support
-    slide.style.opacity = 1;
-    slide.style.transition = "opacity 0.8s ease-in-out";
-
-    function changeSlide() {
-      // fade out
-      slide.style.opacity = 0;
-
-      setTimeout(() => {
-        imgIndex = (imgIndex + 1) % images.length;
-        slide.src = images[imgIndex];
-
-        // fade in
-        slide.style.opacity = 1;
-      }, 800);
+  // prepare
+  elements.forEach(el => {
+    if (!el.classList.contains("slideshow")) {
+      el.dataset.text = el.textContent;
+      el.textContent = "";
     }
+  });
 
-    setInterval(changeSlide, 3000);
-  }
+  setTimeout(next, bootDelay);
 
 });
