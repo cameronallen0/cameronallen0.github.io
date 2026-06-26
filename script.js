@@ -1,8 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
 
   const container = document.querySelector(".typing-area");
-  if (!container) return;
-
   const elements = Array.from(container.querySelectorAll("h1, h2, p, a, .slideshow"));
 
   const typingSpeed = 15;
@@ -26,9 +24,9 @@ document.addEventListener("DOMContentLoaded", () => {
     step();
   }
 
-  function showSlideshow(el, done) {
-    // reveal slideshow BEFORE typing continues
-    el.classList.remove("hidden");
+  function revealSlideshow(el, done) {
+    // 👇 THIS is the key fix: reveal at correct moment
+    el.classList.add("show");
 
     const img = el.querySelector("img");
 
@@ -39,20 +37,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let i = 0;
 
-    function startSlideshow() {
-      setInterval(() => {
-        img.style.opacity = 0;
+    // start AFTER reveal
+    setInterval(() => {
+      img.style.opacity = 0;
 
-        setTimeout(() => {
-          i = (i + 1) % images.length;
-          img.src = images[i];
-          img.style.opacity = 1;
-        }, 800);
+      setTimeout(() => {
+        i = (i + 1) % images.length;
+        img.src = images[i];
+        img.style.opacity = 1;
+      }, 800);
 
-      }, 3000);
-    }
+    }, 3000);
 
-    startSlideshow();
     done?.();
   }
 
@@ -61,9 +57,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const el = elements[index];
 
-    // 🧠 SPECIAL CASE: slideshow block
+    // 🧠 SPECIAL CASE: slideshow is NOT typed, it's revealed
     if (el.classList.contains("slideshow")) {
-      showSlideshow(el, () => {
+      revealSlideshow(el, () => {
         index++;
         next();
       });
