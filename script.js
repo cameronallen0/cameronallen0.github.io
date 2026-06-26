@@ -1,22 +1,34 @@
-const images = [
-  "images/alien.jpg",
-  "images/zorp.jpg"
-];
+document.addEventListener("DOMContentLoaded", () => {
 
-let index = 0;
-const slide = document.getElementById("slide");
+  const slideshows = document.querySelectorAll(".slideshow");
 
-function changeImage() {
-  // fade out
-  slide.style.opacity = 0;
+  slideshows.forEach((box) => {
 
-  setTimeout(() => {
-    index = (index + 1) % images.length;
-    slide.src = images[index];
+    const images = box.dataset.images?.split(",").map(s => s.trim());
 
-    // fade in
-    slide.style.opacity = 1;
-  }, 800); // must match CSS transition time
-}
+    if (!images || images.length === 0) return;
 
-setInterval(changeImage, 3000);
+    // create image element dynamically
+    const img = document.createElement("img");
+    img.src = images[0];
+    box.appendChild(img);
+
+    let index = 0;
+
+    img.style.opacity = 1;
+    img.style.transition = "opacity 0.8s ease-in-out";
+
+    function nextSlide() {
+      img.style.opacity = 0;
+
+      setTimeout(() => {
+        index = (index + 1) % images.length;
+        img.src = images[index];
+        img.style.opacity = 1;
+      }, 800);
+    }
+
+    setInterval(nextSlide, 3000);
+  });
+
+});
