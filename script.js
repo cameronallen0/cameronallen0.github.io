@@ -1,87 +1,26 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  const container = document.querySelector(".typing-area");
-  const elements = Array.from(container.querySelectorAll("h1, h2, p, a, .slideshow"));
+  const slide = document.getElementById("slide");
 
-  const typingSpeed = 15;
-  const bootDelay = 1200;
+  if (!slide) return;
+
+  const images = [
+    "images/alien.jpg",
+    "images/zorp.jpg"
+  ];
 
   let index = 0;
 
-  function typeText(el, text, done) {
-    let i = 0;
-    el.textContent = "";
+  function changeSlide() {
+    slide.style.opacity = 0;
 
-    function step() {
-      if (i < text.length) {
-        el.textContent += text[i++];
-        setTimeout(step, typingSpeed);
-      } else {
-        done?.();
-      }
-    }
-
-    step();
+    setTimeout(() => {
+      index = (index + 1) % images.length;
+      slide.src = images[index];
+      slide.style.opacity = 1;
+    }, 800);
   }
 
-  function revealSlideshow(el, done) {
-    // 👇 THIS is the key fix: reveal at correct moment
-    el.classList.add("show");
-
-    const img = el.querySelector("img");
-
-    const images = [
-      "images/alien.jpg",
-      "images/zorp.jpg"
-    ];
-
-    let i = 0;
-
-    // start AFTER reveal
-    setInterval(() => {
-      img.style.opacity = 0;
-
-      setTimeout(() => {
-        i = (i + 1) % images.length;
-        img.src = images[i];
-        img.style.opacity = 1;
-      }, 800);
-
-    }, 3000);
-
-    done?.();
-  }
-
-  function next() {
-    if (index >= elements.length) return;
-
-    const el = elements[index];
-
-    // 🧠 SPECIAL CASE: slideshow is NOT typed, it's revealed
-    if (el.classList.contains("slideshow")) {
-      revealSlideshow(el, () => {
-        index++;
-        next();
-      });
-      return;
-    }
-
-    const text = el.dataset.text || el.textContent;
-
-    typeText(el, text, () => {
-      index++;
-      next();
-    });
-  }
-
-  // prepare
-  elements.forEach(el => {
-    if (!el.classList.contains("slideshow")) {
-      el.dataset.text = el.textContent;
-      el.textContent = "";
-    }
-  });
-
-  setTimeout(next, bootDelay);
+  setInterval(changeSlide, 3000);
 
 });
