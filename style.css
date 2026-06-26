@@ -1,64 +1,134 @@
+/* ===========================
+   GLOBAL
+=========================== */
+
 body {
-  margin: 0;
-  background: black;
-  color: #00ff66;
-  font-family: "Courier New", monospace;
+    margin: 0;
+    padding: 0;
+    background: #000;
+    color: #00ff66;
+    font-family: "VT323", monospace;
 }
 
-/* CRT scanlines */
+/* CRT Scanlines */
 body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background: repeating-linear-gradient(
-    to bottom,
-    rgba(0, 255, 102, 0.03),
-    rgba(0, 255, 102, 0.03) 1px,
-    transparent 2px,
-    transparent 4px
-  );
-  opacity: 0.4;
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+        to bottom,
+        rgba(0,255,102,0.03),
+        rgba(0,255,102,0.03) 1px,
+        transparent 2px,
+        transparent 4px
+    );
+    opacity: 0.8;
 }
+
+/* ===========================
+   PAGE LAYOUT
+=========================== */
 
 .container {
-  max-width: 900px;
-  margin: auto;
-  padding: 40px;
+    max-width: 900px;
+    margin: auto;
+    padding: 40px;
 }
 
-/* LINKS */
+/* ===========================
+   HEADINGS
+=========================== */
+
+h1 {
+    font-size: 3.8rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-shadow: 0 0 30px #00ff66;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-top: 40px;
+    margin-bottom: 15px;
+    text-shadow: 0 0 30px #00ff66;
+}
+
+/* ===========================
+   TEXT
+=========================== */
+
+p {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    text-shadow: 0 0 30px #00ff66;
+}
+
+/* ===========================
+   LINKS
+=========================== */
+
 a {
-  color: #00ff66;
-  text-decoration: none;
+    color: #00ff66;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: underline;
+    transition:
+        color 0.2s ease,
+        text-shadow 0.2s ease;
 }
 
 a:hover {
-  text-shadow: 0 0 8px #00ff66;
+    text-shadow: 0 0 12px #00ff66;
 }
+
+/* ===========================
+   SLIDESHOW
+=========================== */
 
 .slideshow {
-  width: 100%;
-  max-width: 800px;
-  height: 450px;
+    width: 100%;
+    max-width: 800px;
+    height: 450px;
 
-  border: 2px solid #00ff66;
-  box-shadow: 0 0 12px #00ff66;
+    margin: 20px 0;
 
-  overflow: hidden;
-  position: relative;
-  margin-top: 20px;
+    border: 2px solid #00ff66;
+    box-shadow: 0 0 12px #00ff66;
+
+    position: relative;
+    overflow: hidden;
 }
 
-/* key part: image fits container */
 .slideshow img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain; /* keeps full image visible */
-  position: absolute;
-  top: 0;
-  left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 
-  opacity: 1;
-  transition: opacity 0.8s ease-in-out;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    opacity: 1;
+    transition: opacity 0.8s ease-in-out;
+}
+
+/* ===========================
+   PROJECT BOXES
+=========================== */
+
+.project {
+    margin: 30px 0;
+    padding: 20px;
+    border: 1px solid #00ff66;
+    box-shadow: 0 0 8px rgba(0,255,102,0.3);
+}
+
+/* ===========================
+   SELECTION COLOUR
+=========================== */
+
+::selection {
+    background: #00ff66;
+    color: black;
 }
