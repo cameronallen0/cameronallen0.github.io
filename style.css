@@ -46,3 +46,29 @@ a {
 a:hover {
   text-shadow: 0 0 8px #00ff66;
 }
+
+.slideshow {
+  width: 100%;
+  max-width: 800px;
+  height: 450px;
+
+  border: 2px solid #00ff66;
+  box-shadow: 0 0 12px #00ff66;
+
+  overflow: hidden;
+  position: relative;
+  margin-top: 20px;
+}
+
+/* key part: image fits container */
+.slideshow img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* keeps full image visible */
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  opacity: 1;
+  transition: opacity 0.8s ease-in-out;
+}
