@@ -23,7 +23,7 @@ body::before {
         transparent 2px,
         transparent 4px
     );
-    opacity: 0.4;
+    opacity: 1;
 }
 
 /* ===========================
@@ -67,7 +67,7 @@ body::before {
         transparent 4px
     );
 
-    opacity: 0.4;
+    opacity: 1;
     pointer-events: none;
 }
 
