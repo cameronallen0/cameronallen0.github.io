@@ -41,26 +41,37 @@ const navbar = document.querySelector(".navbar");
 
 if (navbar) {
 
-    let scrollTimer;
+    let lastScroll = window.scrollY;
 
-    function handleMobileScroll() {
+    window.addEventListener("scroll", () => {
 
-        // Only run on mobile
-        if (window.innerWidth > 768) return;
-
-        // Hide immediately
-        navbar.classList.add("nav-hidden");
-
-        // Reset timer every time the user scrolls
-        clearTimeout(scrollTimer);
-
-        // Show again after scrolling stops
-        scrollTimer = setTimeout(() => {
+        // Desktop keeps the navbar visible
+        if (window.innerWidth > 768) {
             navbar.classList.remove("nav-hidden");
-        }, 700);
+            return;
+        }
 
-    }
+        const currentScroll = window.scrollY;
 
-    window.addEventListener("scroll", handleMobileScroll);
+        // Always show at the very top
+        if (currentScroll <= 10) {
+            navbar.classList.remove("nav-hidden");
+            lastScroll = currentScroll;
+            return;
+        }
+
+        // Scrolling down
+        if (currentScroll > lastScroll) {
+            navbar.classList.add("nav-hidden");
+        }
+
+        // Scrolling up
+        else {
+            navbar.classList.remove("nav-hidden");
+        }
+
+        lastScroll = currentScroll;
+
+    });
 
 }

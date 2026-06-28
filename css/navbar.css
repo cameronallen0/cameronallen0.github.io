@@ -1,24 +1,23 @@
 /* NAVBAR */
 
 .navbar {
-
     position: sticky;
-
     top: 0;
-
     z-index: 1000;
 
     display: flex;
-
     justify-content: center;
-
     align-items: center;
-
     gap: 50px;
 
-    padding: 18px 0;
+    /* Account for the phone's safe area */
+    padding:
+        calc(env(safe-area-inset-top) + 18px)
+        0
+        18px
+        0;
 
-    background: black;
+    background: #000;
 
     border-bottom: 2px solid #00ff66;
 
@@ -27,7 +26,6 @@
         inset 0 0 8px rgba(0,255,102,.15);
 
     overflow: hidden;
-
 }
 
 .navbar::before {
@@ -85,11 +83,17 @@
 @media (max-width: 768px) {
 
     .navbar {
-        transition: transform 0.3s ease;
-    }
+        flex-direction: column;
+        gap: 12px;
 
-    .navbar.nav-hidden {
-        transform: translateY(-100%);
+        padding:
+            calc(env(safe-area-inset-top) + 15px)
+            0
+            15px
+            0;
+
+        transition: transform 0.3s ease;
+        will-change: transform;
     }
 
 }
