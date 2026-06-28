@@ -1,0 +1,25 @@
+/* CRT Scanlines */
+
+body::before {
+
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 9999;
+
+    background: repeating-linear-gradient(
+        to bottom,
+        rgba(0,255,102,.03),
+        rgba(0,255,102,.03) 1px,
+        transparent 2px,
+        transparent 4px
+    );
+
+    opacity: 0.8;
+
+}
