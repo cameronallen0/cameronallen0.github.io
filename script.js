@@ -32,3 +32,35 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+
+/* ===========================
+   MOBILE NAVBAR
+=========================== */
+
+const navbar = document.querySelector(".navbar");
+
+if (navbar) {
+
+    let scrollTimer;
+
+    function handleMobileScroll() {
+
+        // Only run on mobile
+        if (window.innerWidth > 768) return;
+
+        // Hide immediately
+        navbar.classList.add("nav-hidden");
+
+        // Reset timer every time the user scrolls
+        clearTimeout(scrollTimer);
+
+        // Show again after scrolling stops
+        scrollTimer = setTimeout(() => {
+            navbar.classList.remove("nav-hidden");
+        }, 700);
+
+    }
+
+    window.addEventListener("scroll", handleMobileScroll);
+
+}

@@ -81,3 +81,15 @@
     text-shadow: 0 0 12px #00ff66;
 
 }
+
+@media (max-width: 768px) {
+
+    .navbar {
+        transition: transform 0.3s ease;
+    }
+
+    .navbar.nav-hidden {
+        transform: translateY(-100%);
+    }
+
+}
