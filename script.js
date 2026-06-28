@@ -33,45 +33,46 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-/* ===========================
-   MOBILE NAVBAR
-=========================== */
-
 const navbar = document.querySelector(".navbar");
 
 if (navbar) {
 
-    let lastScroll = window.scrollY;
+    let lastScrollY = window.pageYOffset;
+    let ticking = false;
+
+    function updateNavbar() {
+
+        const currentScrollY = window.pageYOffset;
+
+        // Always show at top
+        if (currentScrollY <= 10) {
+            navbar.classList.remove("nav-hidden");
+        }
+        else {
+
+            // scrolling down → hide
+            if (currentScrollY > lastScrollY) {
+                navbar.classList.add("nav-hidden");
+            }
+
+            // scrolling up → show
+            else {
+                navbar.classList.remove("nav-hidden");
+            }
+
+        }
+
+        lastScrollY = currentScrollY;
+        ticking = false;
+    }
 
     window.addEventListener("scroll", () => {
 
-        // Desktop keeps the navbar visible
-        if (window.innerWidth > 768) {
-            navbar.classList.remove("nav-hidden");
-            return;
+        if (!ticking) {
+            window.requestAnimationFrame(updateNavbar);
+            ticking = true;
         }
 
-        const currentScroll = window.scrollY;
-
-        // Always show at the very top
-        if (currentScroll <= 10) {
-            navbar.classList.remove("nav-hidden");
-            lastScroll = currentScroll;
-            return;
-        }
-
-        // Scrolling down
-        if (currentScroll > lastScroll) {
-            navbar.classList.add("nav-hidden");
-        }
-
-        // Scrolling up
-        else {
-            navbar.classList.remove("nav-hidden");
-        }
-
-        lastScroll = currentScroll;
-
-    });
+    }, { passive: true });
 
 }
