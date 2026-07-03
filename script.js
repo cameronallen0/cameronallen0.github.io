@@ -1,34 +1,51 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  const slideshows = document.querySelectorAll(".slideshow");
+    document.querySelectorAll(".slideshow").forEach(slideshow => {
 
-  slideshows.forEach((box) => {
+        const images = slideshow.dataset.images
+            ?.split(",")
+            .map(img => img.trim())
+            .filter(Boolean);
 
-    const images = box.dataset.images?.split(",").map(s => s.trim());
+        if (!images || images.length === 0) return;
 
-    if (!images || images.length === 0) return;
+        let current = 0;
 
-    // create image element dynamically
-    const img = document.createElement("img");
-    img.src = images[0];
-    box.appendChild(img);
+        const img = document.createElement("img");
+        img.src = images[current];
 
-    let index = 0;
+        slideshow.appendChild(img);
 
-    img.style.opacity = 1;
-    img.style.transition = "opacity 0.8s ease-in-out";
+        function transitionSlide() {
 
-    function nextSlide() {
-      img.style.opacity = 0;
+            // start CRT effect
+            slideshow.classList.add("crt-transition");
 
-      setTimeout(() => {
-        index = (index + 1) % images.length;
-        img.src = images[index];
-        img.style.opacity = 1;
-      }, 800);
-    }
+            // swap image at distortion peak
+            setTimeout(() => {
 
-    setInterval(nextSlide, 3000);
-  });
+                current = (current + 1) % images.length;
+                img.src = images[current];
+
+                // force repaint (prevents “no change” bug)
+                img.style.opacity = "0.99";
+                requestAnimationFrame(() => {
+                    img.style.opacity = "1";
+                });
+
+            }, 650);
+
+            // end CRT effect
+            setTimeout(() => {
+
+                slideshow.classList.remove("crt-transition");
+
+            }, 1400);
+
+        }
+
+        setInterval(transitionSlide, 5000);
+
+    });
 
 });
