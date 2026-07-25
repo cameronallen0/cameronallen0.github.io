@@ -1,6 +1,5 @@
 .navbar {
     position: fixed;
-
     top: 0;
     left: 0;
     right: 0;
@@ -12,9 +11,8 @@
     align-items: center;
     gap: 50px;
 
-    /* Safe area support */
-    padding-top: env(safe-area-inset-top);
-    padding-bottom: 18px;
+    /* More space above and below the links */
+    padding: 20px 0 18px;
 
     background: #000;
 

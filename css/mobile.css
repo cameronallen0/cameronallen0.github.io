@@ -1,68 +1,69 @@
-@media (max-width:768px){
+@media (max-width: 768px) {
 
-body::before{
+    /* CRT effect */
+    body::before {
+        opacity: 0.8;
+    }
 
-opacity: 0.8;
+    /* Push content below the taller mobile navbar */
+    body {
+        padding-top: calc(160px + env(safe-area-inset-top));
+    }
 
-}
+    .container {
+        padding: 20px;
+        padding-top: 20px;
+    }
 
-.container{
+    h1 {
+        font-size: 2.5rem;
+        text-align: left;
+    }
 
-padding:20px;
+    h2 {
+        font-size: 1.7rem;
+    }
 
-}
+    p {
+        font-size: 1rem;
+    }
 
-h1{
+    a {
+        font-size: 1.2rem;
+    }
 
-font-size:2.5rem;
+    /* Mobile Navigation */
+    .navbar {
+        flex-direction: column;
+        gap: 6px;
 
-text-align:left;
+        /* Supports iPhones with a notch/Dynamic Island */
+        padding-top: calc(env(safe-area-inset-top) + 12px);
+        padding-bottom: 20px;
+    }
 
-}
+    .navbar a {
+        width: auto;
 
-h2{
+        padding: 4px;
 
-font-size:1.7rem;
+        border: none;
+        box-shadow: none;
 
-}
+        text-align: center;
 
-p{
+        font-size: 1.5rem;
+    }
 
-font-size:1rem;
+    /* Slideshow */
+    .slideshow {
+        width: 100%;
+        margin: 20px auto;
+    }
 
-}
-
-a{
-
-font-size:1.2rem;
-
-}
-
-.navbar {
-    flex-direction: column;
-    gap: 6px;
-
-    padding-top: calc(env(safe-area-inset-top) + 12px);
-    padding-bottom: 12px;
-}
-
-.navbar a {
-    width: auto;
-
-    padding: 4px;
-
-    border: none;
-    box-shadow: none;
-
-    text-align: center;
-
-    font-size: 1.5rem;
-}
-
-.contact{
-
-text-align:center;
-
-}
+    /* Contact section */
+    .contact {
+        text-align: center;
+    }
 
 }
