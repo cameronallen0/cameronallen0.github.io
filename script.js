@@ -1,5 +1,43 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+    /* ===========================
+       MOBILE MENU
+    =========================== */
+
+const menuButton = document.querySelector(".menu-toggle");
+const navLinks = document.querySelector(".nav-links");
+const navbar = document.querySelector(".navbar");
+
+if (menuButton && navLinks) {
+
+    menuButton.addEventListener("click", () => {
+
+        navLinks.classList.toggle("open");
+
+        menuButton.textContent =
+            navLinks.classList.contains("open")
+                ? "[ MENU ▴ ]"
+                : "[ MENU ▾ ]";
+
+    });
+
+    navLinks.querySelectorAll("a").forEach(link => {
+
+        link.addEventListener("click", () => {
+
+            navLinks.classList.remove("open");
+            menuButton.textContent = "[ MENU ▾ ]";
+
+        });
+
+    });
+
+}
+
+    /* ===========================
+       SLIDESHOW
+    =========================== */
+
     document.querySelectorAll(".slideshow").forEach(slideshow => {
 
         const images = slideshow.dataset.images
@@ -18,24 +56,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
         function transitionSlide() {
 
-            // start CRT effect
+            // Start CRT transition
             slideshow.classList.add("crt-transition");
 
-            // swap image at distortion peak
+            // Swap image during the distortion
             setTimeout(() => {
 
                 current = (current + 1) % images.length;
-                img.src = images[current];
 
-                // force repaint (prevents “no change” bug)
-                img.style.opacity = "0.99";
-                requestAnimationFrame(() => {
-                    img.style.opacity = "1";
-                });
+                img.src = images[current];
 
             }, 650);
 
-            // end CRT effect
+            // End transition
             setTimeout(() => {
 
                 slideshow.classList.remove("crt-transition");
@@ -44,6 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         }
 
+        // Change image every 5 seconds
         setInterval(transitionSlide, 5000);
 
     });
