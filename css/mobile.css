@@ -5,7 +5,7 @@
     }
 
     body {
-        padding-top: calc(160px + env(safe-area-inset-top));
+        padding-top: calc(40px + env(safe-area-inset-top));
     }
 
     .container {
@@ -113,16 +113,14 @@
 
     }
 
+    .menu-toggle:active {
 
-    .menu-toggle:hover {
+    	transform: scale(0.95);
 
-        transform: scale(1.08);
-
-        text-shadow:
-            0 0 16px #00ff66;
+    	text-shadow:
+        	0 0 16px #00ff66;
 
     }
-
 
     /* Dropdown */
 
@@ -174,15 +172,15 @@
 
     }
 
+    .nav-links a:active {
 
-    .nav-links a:hover {
+    	transform: scale(0.95);
 
-        transform: scale(1.08);
-
-        text-shadow:
-            0 0 16px #00ff66;
+    	text-shadow:
+        	0 0 16px #00ff66;
 
     }
+
 /* Slideshow */ 
     .slideshow { 
 	width: 100%; 

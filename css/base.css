@@ -16,7 +16,7 @@ body {
     color: #00ff66;
     font-family: "VT323", monospace;
 
-    padding-top: calc(80px + env(safe-area-inset-top));
+    padding-top: calc(10px + env(safe-area-inset-top));
 }
 
 .container {
