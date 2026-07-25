@@ -12,12 +12,11 @@ html {
 
 body {
     margin: 0;
-    padding: 0;
-
     background: #000;
     color: #00ff66;
-
     font-family: "VT323", monospace;
+
+    padding-top: calc(80px + env(safe-area-inset-top));
 }
 
 .container {

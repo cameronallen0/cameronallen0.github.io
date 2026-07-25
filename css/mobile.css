@@ -38,14 +38,12 @@ font-size:1.2rem;
 
 }
 
-.navbar{
+.navbar {
+    flex-direction: column;
+    gap: 6px;
 
-flex-direction:column;
-
-gap:6px;
-
-padding:12px 0;
-
+    padding-top: calc(env(safe-area-inset-top) + 12px);
+    padding-bottom: 12px;
 }
 
 .navbar a {
